@@ -1,0 +1,8 @@
+# =================================
+# Spring
+# =================================
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://realmeet-db:5432/bluemeet?serverTimezone=UTC&useSSL=false
+    username: admin
