@@ -13,7 +13,7 @@ spring:
     active: dev
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/bluemeet?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:postgresql://localhost:5432/realmeet?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     username: postgres
     password: admin
     type: com.zaxxer.hikari.HikariDataSource

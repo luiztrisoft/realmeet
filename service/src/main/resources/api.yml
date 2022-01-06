@@ -224,6 +224,46 @@ paths:
         422:
           $ref: '#/components/responses/UnprocessableEntity'
 
+  /reports/allocation:
+    post:
+      tags:
+        - report
+      summary: Generates the allocation report
+      operationId: createAllocationReport
+      parameters:
+        - $ref: '#/components/parameters/apiKey'
+        - name: email
+          in: query
+          description: The e-mail to send the report
+          required: true
+          schema:
+            type: string
+        - name: dateFrom
+          in: query
+          description: Start date to filter
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: dateTo
+          in: query
+          description: End date to filter
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: reportFormat
+          in: query
+          description: Report format. Can be 'PDF' or 'XML'. Defaults to 'PDF'
+          required: false
+          schema:
+            type: string
+      responses:
+        201:
+          description: Created
+        422:
+          $ref: '#/components/responses/UnprocessableEntity'
+
 components:
   schemas:
     UpdateRoomDTO:
