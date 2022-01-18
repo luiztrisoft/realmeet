@@ -6,7 +6,6 @@ import br.com.sw2you.realmeet.domain.entity.Room;
 import br.com.sw2you.realmeet.domain.repository.RoomRepository;
 import br.com.sw2you.realmeet.exception.RoomNotFoundException;
 import br.com.sw2you.realmeet.mapper.RoomMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,7 +21,7 @@ public class RoomService {
 
     public RoomDTO getRoom(Long id){
         Objects.requireNonNull(id);
-        Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);//()->new RoomNotFoundException() lambda or reference
+        Room room = roomRepository.findById(id).orElseThrow(()->new RoomNotFoundException("Room não encontrada: " + id));//(RoomNotFoundException::new) lambda or reference
         return roomMapper.fromEntityToDto(room);
     }
 }

@@ -24,3 +24,9 @@ logging:
   level:
     org.springframework: INFO
     org.flywaydb: INFO
+
+realmeet:
+    taskExecutor:
+      pool:
+        coreSize: 20
+        maxSize: 20

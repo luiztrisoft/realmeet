@@ -335,6 +335,13 @@ components:
           type: string
         errorCode:
           type: string
+        status:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
 
   responses:
     UnprocessableEntity:
