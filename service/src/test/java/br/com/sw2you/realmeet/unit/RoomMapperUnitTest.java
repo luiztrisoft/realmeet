@@ -5,15 +5,12 @@ import static br.com.sw2you.realmeet.utils.TestConstants.DEFAULT_ROOM_ID;
 import static br.com.sw2you.realmeet.utils.TestDataCreator.newRoomBuilder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import br.com.sw2you.realmeet.core.BaseUnitTest;
 import br.com.sw2you.realmeet.mapper.RoomMapper;
-import br.com.sw2you.realmeet.utils.TestDataCreator;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.jupiter.api.Test;
 
-@ExtendWith(MockitoExtension.class)
-class RoomMapperUnitTest {
+class RoomMapperUnitTest extends BaseUnitTest {
 
     private RoomMapper victim;
 
