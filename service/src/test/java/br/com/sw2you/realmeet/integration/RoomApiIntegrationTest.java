@@ -32,7 +32,7 @@ class RoomApiIntegrationTest extends BaseIntegrationTest {
         assertNotNull(room.getId());
         assertTrue(room.getActive());
 
-        var dto = api.getRoom("api-key",DEFAULT_ROOM_ID);
+        var dto = api.getRoom(DEFAULT_ROOM_ID);
         assertEquals(room.getId(), dto.getId());
         assertEquals(room.getName(), dto.getName());
         assertEquals(room.getSeats(), dto.getSeats());
@@ -44,11 +44,11 @@ class RoomApiIntegrationTest extends BaseIntegrationTest {
         roomRepository.saveAndFlush(room);
 
         assertFalse(room.getActive());
-        assertThrows(HttpClientErrorException.NotFound.class, ()-> api.getRoom("api-key", room.getId()));
+        assertThrows(HttpClientErrorException.NotFound.class, ()-> api.getRoom(room.getId()));
     }
 
     @Test
     void testGetRoomDoesNotExist(){
-        assertThrows(HttpClientErrorException.NotFound.class, ()-> api.getRoom("api-key", DEFAULT_ROOM_ID));
+        assertThrows(HttpClientErrorException.NotFound.class, ()-> api.getRoom(DEFAULT_ROOM_ID));
     }
 }
