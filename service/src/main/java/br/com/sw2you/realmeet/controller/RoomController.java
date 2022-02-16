@@ -25,6 +25,7 @@ public class RoomController implements RoomsApi {
 
     @Override
     public CompletableFuture<ResponseEntity<RoomDTO>> getRoom(String apiKey, Long id) {
+//    public CompletableFuture<ResponseEntity<RoomDTO>> getRoom(Long id) {
         Objects.requireNonNull(id);
         //return CompletableFuture.supplyAsync(()-> ResponseEntity.ok(roomService.getRoom(id)));
         return CompletableFuture.supplyAsync(()-> roomService.getRoom(id), controllerExecutor).thenApply(ResponseEntityUtils::ok);

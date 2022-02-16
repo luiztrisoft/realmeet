@@ -21,7 +21,7 @@ public class RoomService {
 
     public RoomDTO getRoom(Long id){
         Objects.requireNonNull(id);
-        Room room = roomRepository.findById(id).orElseThrow(()->new RoomNotFoundException("Room não encontrada: " + id));//(RoomNotFoundException::new) lambda or reference
+        Room room = roomRepository.findByIdAndActive(id, true).orElseThrow(()->new RoomNotFoundException("Room não encontrada: " + id));//(RoomNotFoundException::new) lambda or reference
         return roomMapper.fromEntityToDto(room);
     }
 }
