@@ -1,6 +1,7 @@
 package br.com.sw2you.realmeet.service;
 
 import java.util.Objects;
+import br.com.sw2you.realmeet.api.model.CreateRoomDTO;
 import br.com.sw2you.realmeet.api.model.RoomDTO;
 import br.com.sw2you.realmeet.domain.entity.Room;
 import br.com.sw2you.realmeet.domain.repository.RoomRepository;
@@ -23,5 +24,11 @@ public class RoomService {
         Objects.requireNonNull(id);
         Room room = roomRepository.findByIdAndActive(id, true).orElseThrow(()->new RoomNotFoundException("Room não encontrada: " + id));//(RoomNotFoundException::new) lambda or reference
         return roomMapper.fromEntityToDto(room);
+    }
+
+    public RoomDTO createRoom(CreateRoomDTO createRoomDTO){
+        var room = Room.newBuilder().seats(createRoomDTO.getSeats()).name(createRoomDTO.getName()).build();
+        roomRepository.save(room);
+        return new RoomDTO().id(room.getId()).seats(room.getSeats()).name(room.getName());
     }
 }
